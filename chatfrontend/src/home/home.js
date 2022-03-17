@@ -30,6 +30,7 @@ function Homepage({ socket }) {
       ></input>
       <Link to={`/chat/${roomname}/${username}`}>
         <button onClick={sendData}>Join</button>
+        <button style={{ marginLeft: "25px" }} onClick={sendData}>Register</button>
       </Link>
     </div>
   );
