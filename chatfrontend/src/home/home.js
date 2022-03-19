@@ -14,6 +14,15 @@ function Homepage({ socket }) {
       window.location.reload();
     }
   };
+  const registerAccount = () => {
+    if (username !== "" && roomname !== "") {
+      socket.emit("registerAccount", { username, roomname });
+    } else {
+      alert("username and roomname are must !");
+      window.location.reload();
+    }
+  };
+
 
   return (
     <div className="homepage">
@@ -30,10 +39,13 @@ function Homepage({ socket }) {
       ></input>
       <Link to={`/chat/${roomname}/${username}`}>
         <button onClick={sendData}>Join</button>
-        <button style={{ marginLeft: "25px" }} onClick={sendData}>Register</button>
+      </Link>
+      <Link to={`/chat/register`}>
+        <button onClick={registerAccount}>Register</button>
       </Link>
     </div>
   );
 }
 
+// style={{ marginLeft: "25px" }}
 export default Homepage;

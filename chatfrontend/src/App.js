@@ -32,6 +32,7 @@ function App() {
             <Home socket={socket} />
           </Route>
           <Route path="/chat/:roomname/:username" component={Appmain} />
+          <Route path="/chat/register" component={Appmain} />
         </Switch>
       </div>
     </Router>
