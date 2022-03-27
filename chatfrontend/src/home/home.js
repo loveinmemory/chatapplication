@@ -41,7 +41,7 @@ function Homepage({ socket }) {
         <button onClick={sendData}>Join</button>
       </Link>
       <Link to={`/chat/register`}>
-        <button onClick={registerAccount}>Register</button>
+        <button>Register</button>
       </Link>
     </div>
   );

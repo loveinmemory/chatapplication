@@ -29,7 +29,7 @@ function Registermain(props) {
   return (
     <React.Fragment>
         <div>
-          <Form/>
+          <Form socket={socket}/>
         </div>
     </React.Fragment>
   );

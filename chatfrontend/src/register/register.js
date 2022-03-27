@@ -1,13 +1,16 @@
 import React,{ Component } from 'react'
 import "./register.scss";
+import { Link } from "react-router-dom";
+import socket from 'socket.io'
 
 class Form extends Component{
 constructor(props){
 	super(props)
 	this.state = { email:'',name:'', age:null, address:'',phoneNo:''}
 	this.handleChange = this.handleChange.bind(this)
-	this.handleSubmit = this.handleSubmit.bind(this)
+	// this.handleSubmit = this.handleSubmit.bind(this)
 }
+
 
 // Form submitting logic, prevent default page refresh
 handleSubmit(event){
@@ -35,10 +38,16 @@ handleChange(event){
 	})
 }
 
+
 // Return a controlled form i.e. values of the
 // input field not stored in DOM values are exist
 // in react component itself as state
 render(){
+   const sendData = () => {
+      const { name, address } = this.state
+      socket.$emit("joinRoom", { name, address });
+   }
+
 	return(
 	<form onSubmit={this.handleSubmit} className="registerpage">
 		<div>
@@ -86,9 +95,39 @@ render(){
 			onChange={this.handleChange}
 		/>
 		</div>
-		<div>
-		<button>Create Account</button>
+      <div>
+		<label htmlFor='highSchool'>High School</label>
+		<input
+			name='highSchool'
+			placeholder='High School'
+			value={this.state.highSchool}
+			onChange={this.handleChange}
+		/>
 		</div>
+      <div>
+		<label htmlFor='className'>Class Name</label>
+		<input
+			name='className'
+			placeholder='Class Name'
+			value={this.state.className}
+			onChange={this.handleChange}
+		/>
+		</div>
+      <div>
+		<label htmlFor='year'>Year</label>
+		<input
+			name='year'
+			placeholder='Year'
+			value={this.state.year}
+			onChange={this.handleChange}
+		/>
+		</div>
+		<div>
+      <Link to={`/chat/${this.state.address}/${this.state.name}`}>
+      {/* <Link to={`/chat/8zhong-class33-year2009/liangwen`}> */}
+		<button onClick={sendData}>Create Account</button>
+		</Link>
+      </div>
 	</form>
 	)
 }
