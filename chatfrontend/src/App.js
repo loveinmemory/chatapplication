@@ -1,7 +1,7 @@
 import Chat from "./chat/chat";
 import Process from "./process/process";
 import Home from "./home/home";
-import Form from "./register/register";
+import Register from "./register/register";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.scss";
@@ -29,7 +29,7 @@ function Registermain(props) {
   return (
     <React.Fragment>
         <div>
-          <Form socket={socket}/>
+          <Register socket={socket}/>
         </div>
     </React.Fragment>
   );
